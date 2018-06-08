@@ -1,9 +1,9 @@
 #!/bin/bash 										# скрипт скачивания контента с сайта
-													# https://720video.tv/
-													# пока его окончательно не заблокировали
-path="/media/media/video/erotic"					# путь к папке куда складывать ролики
-pn="seks-porno"
+
+a="eks-por"
+path="/media/media/video"							# путь к папке куда складывать ролики
 uri="https://720video.tv/"
+pn="s${a}no"
 
 for i in `seq 1 638`; do							# цикл перечисления титульных страниц сайта
 	if [ ${i} -eq 1 ]; then i=""
