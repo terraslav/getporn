@@ -3,13 +3,14 @@
 													# пока его окончательно не заблокировали
 path="/media/media/video/erotic"					# путь к папке куда складывать ролики
 pn="seks-porno"
+uri="https://720video.tv/"
 
 for i in `seq 1 638`; do							# цикл перечисления титульных страниц сайта
 	if [ ${i} -eq 1 ]; then i=""
 	else i="${i}"
 	fi												# скачиваю титульную сраницу со ссылками
 													# на идивидуальные ролики
-	wget "https://720video.tv/${pn}-video/${i}" -O /tmp/tmp.http
+	wget "${uri}${pn}-video/${i}" -O /tmp/tmp.http
 
 													# и распарсиваю её создавая простой URL-лист файл
 	grep 'https://720video.tv/videos' "/tmp/tmp.http"|sed 's/^.*<a href=\"//; s/\/\".*$//g' > /tmp/tmp.pls
