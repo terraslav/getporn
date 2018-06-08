@@ -1,19 +1,17 @@
 #!/bin/bash 										# скрипт скачивания контента с сайта
 
-a="eks-por"
+a="eks-por"; b="video"; pn="s${a}no"; uri="https://720${b}.tv/"
 path="/media/media/video"							# путь к папке куда складывать ролики
-uri="https://720video.tv/"
-pn="s${a}no"
 
 for i in `seq 1 638`; do							# цикл перечисления титульных страниц сайта
 	if [ ${i} -eq 1 ]; then i=""
 	else i="${i}"
 	fi												# скачиваю титульную сраницу со ссылками
 													# на идивидуальные ролики
-	wget "${uri}${pn}-video/${i}" -O /tmp/tmp.http
+	wget "${uri}${pn}-${b}/${i}" -O /tmp/tmp.http
 
 													# и распарсиваю её создавая простой URL-лист файл
-	grep 'https://720video.tv/videos' "/tmp/tmp.http"|sed 's/^.*<a href=\"//; s/\/\".*$//g' > /tmp/tmp.pls
+	grep 'https://720${b}.tv/${b}s' "/tmp/tmp.http"|sed 's/^.*<a href=\"//; s/\/\".*$//g' > /tmp/tmp.pls
 
 	while read page; do								# цикл чтения URL-листа страниц с роликами
 													# скачиваю страницу с описанием и ссылкой на ролик
